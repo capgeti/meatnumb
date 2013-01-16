@@ -1,0 +1,8 @@
+*.blend1
+*.blend2
+*.pyc
+bin/
+*.ipr
+*.iws
+*.iml
+*.xcf
