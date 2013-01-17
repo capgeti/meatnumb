@@ -37,14 +37,9 @@ class HudView(DefaultView):
         self.gameMenuFrame.visible = False
 
     def createHPView(self, aspect):
-        self.hpFrame = bgui.Frame(self, "hpFrame", border=1, pos=[0.01, 0.01], size=[0.1, 0.1 * aspect],
-            sub_theme="transp")
-        self.hpOben = bgui.Frame(self.hpFrame, "hpOben", pos=[0, 0.5], size=[1, 0.5])
-        bgui.Label(self.hpOben, "hptext", text="Leben:", pt_size=self.ptGross, pos=[0.05, 0],
-            options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERY)
-        self.hpUnten = bgui.Frame(self.hpFrame, "hpUnten", pos=[0, 0], size=[1, 0.5])
-        self.hpAnzeige = bgui.Label(self.hpUnten, "hpAnzeige", text="100", pt_size=self.ptSehrGross,  pos=[0.05, 0],
-            options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERY)
+        self.hpFrame = bgui.Frame(self, "hpFrame", border=1, pos=[0.01, 0.01], size=[0.1, 0.1 * aspect])
+        bgui.Label(self.hpFrame, "hptext", text="Leben:", pt_size=self.ptGross, pos=[0.05, 0.7])
+        self.hpAnzeige = bgui.Label(self.hpFrame, "hpAnzeige", text="100", pt_size=self.ptSehrGross,  pos=[0.05, 0.1])
 
     def createItemList(self, aspect):
         self.itemFrame = bgui.Frame(self, "itemFrame", size=[0.225, 0.068 * aspect], pos=[0.3875, 0.01],
@@ -83,6 +78,17 @@ class HudView(DefaultView):
         DefaultView.main(self)
 
         weapons = playerController.player['weapons']
+
+        currentWeapon = playerController.currentWeaponObject
+        if currentWeapon:
+            self.weaponNameLabel.text = currentWeapon.name
+            self.muniLabel.text = str(currentWeapon['schuss']).zfill(2) + " / " + str(currentWeapon['schusskapa']).zfill(2)
+            self.magazinLabel.text = str(currentWeapon['magazine']).zfill(2)
+        else:
+            self.muniLabel.text = "- / -"
+            self.weaponNameLabel.text = "Keine Waffe"
+            self.magazinLabel.text = "-"
+
         for i in range(self.itemcount):
             item = self.items[i].itemImage
             itemImage = item.image
@@ -96,16 +102,11 @@ class HudView(DefaultView):
                 item.image = None
 
     def createMunintionView(self, aspect):
-        self.muniFrame = bgui.Frame(self, "hpFrame", border=1, pos=[0.01, 0.01], size=[0.1, 0.1 * aspect],
-            sub_theme="transp")
-        self.hpOben = bgui.Frame(self.hpFrame, "hpOben", pos=[0, 0.5], size=[1, 0.5])
-        bgui.Label(self.hpOben, "hptext", text="Leben:", pt_size=self.ptGross, pos=[0.05, 0],
-            options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERY)
-        self.hpUnten = bgui.Frame(self.hpFrame, "hpUnten", pos=[0, 0], size=[1, 0.5])
-        self.hpAnzeige = bgui.Label(self.hpUnten, "hpAnzeige", text="100", pt_size=self.ptSehrGross,  pos=[0.05, 0],
-            options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERY)
+        self.muniFrame = bgui.Frame(self, "muniFrame", border=1, pos=[0.84, 0.01], size=[0.15, 0.1 * aspect])
+        self.weaponNameLabel = bgui.Label(self.muniFrame, "nameLabel", pt_size=self.ptNormal, text="Keine Waffe", pos=[0.05, 0.7])
+        self.muniLabel = bgui.Label(self.muniFrame, "muniLabel", pt_size=self.ptGross, text="- / -", pos=[0.05, 0.38])
+        self.magazinLabel = bgui.Label(self.muniFrame, "magaLabel", pt_size=self.ptGross, text="-", pos=[0.7, 0.1])
 
-    pass
 
 
 class ItemView(bgui.Image):
