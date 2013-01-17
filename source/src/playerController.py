@@ -1,5 +1,8 @@
+from itertools import groupby
+
 import bge
 from mathutils import Vector
+
 
 __author__ = 'capgeti'
 
@@ -25,7 +28,7 @@ def removeCurrentWeapon():
 def init(cont):
     global player
     player = cont.owner
-    player['weapons'] = []
+    player['weapons'] = [None for i in range(3)]
     player['currentWeaponSlot'] = -1
     player['hp'] = 100
     player['speed'] = 5
@@ -39,7 +42,7 @@ def dropCurrentWeapon():
 
     try:
         currentslot = player['currentWeaponSlot']
-        del player['weapons'][currentslot]
+        player['weapons'][currentslot] = None
         currentWeaponObject.removeParent()
         currentWeaponObject.orientation = player.orientation
         currentWeaponObject.applyForce((0, 160, 50), True)
@@ -50,7 +53,7 @@ def dropCurrentWeapon():
 
 def updatePlayerLookAt(cont):
     over = cont.sensors["overAny"]
-    if over.positive:
+    if over.positive and not "useable" in over.hitObject:
         cont.owner.position = over.hitPosition
 
 
@@ -117,6 +120,7 @@ def shoot(cont):
         bones = player.children['playerBones']
         bones.playAction("schuss", 1, 5, blendin=2, layer=1, play_mode=0)
 
+
 def setWaffenSlot(slot, checkCurrent=True):
     if slot == player['currentWeaponSlot'] and checkCurrent:
         return
@@ -139,16 +143,19 @@ def setWaffenSlot(slot, checkCurrent=True):
     finally:
         player['currentWeaponSlot'] = slot
 
+
 def pickUp(cont):
     collision = cont.sensors['colli']
-    if collision.positive:
-        pickUpObject = collision.hitObject
+    if not collision.positive:
+        return
 
-        if pickUpObject.get("useable") == "weapon" and len(player['weapons']) <= 3:
-            player['weapons'].append(pickUpObject.name)
-            if player['currentWeaponSlot'] == len(player['weapons']) - 1:
-                setWaffenSlot(player['currentWeaponSlot'], checkCurrent=False)
-            pickUpObject.endObject()
+    pickUpObject = collision.hitObject
+    if pickUpObject.get("useable") == "weapon" and len([e for e in player['weapons'] if not e]) > 0:
+        freeSlot = player['weapons'].index(None)
+        player['weapons'][freeSlot] = pickUpObject.name
+        if player['currentWeaponSlot'] == freeSlot:
+            setWaffenSlot(player['currentWeaponSlot'], checkCurrent=False)
+        pickUpObject.endObject()
 
 
 

@@ -21,6 +21,7 @@ class HudView(DefaultView):
         self.items = []
 
         self.createHPView(aspect)
+        self.createMunintionView(aspect)
         self.createItemList(aspect)
         self.createMainMenu()
 
@@ -85,15 +86,26 @@ class HudView(DefaultView):
         for i in range(self.itemcount):
             item = self.items[i].itemImage
             itemImage = item.image
-            try:
+            if weapons[i]:
                 path = "textures/" + weapons[i] + ".png"
                 if itemImage != path:
                     item.visible = True
                     item.update_image(path)
-            except IndexError:
-                if item.image:
-                    item.visible = False
-                    item.image = None
+            elif item.image:
+                item.visible = False
+                item.image = None
+
+    def createMunintionView(self, aspect):
+        self.muniFrame = bgui.Frame(self, "hpFrame", border=1, pos=[0.01, 0.01], size=[0.1, 0.1 * aspect],
+            sub_theme="transp")
+        self.hpOben = bgui.Frame(self.hpFrame, "hpOben", pos=[0, 0.5], size=[1, 0.5])
+        bgui.Label(self.hpOben, "hptext", text="Leben:", pt_size=self.ptGross, pos=[0.05, 0],
+            options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERY)
+        self.hpUnten = bgui.Frame(self.hpFrame, "hpUnten", pos=[0, 0], size=[1, 0.5])
+        self.hpAnzeige = bgui.Label(self.hpUnten, "hpAnzeige", text="100", pt_size=self.ptSehrGross,  pos=[0.05, 0],
+            options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERY)
+
+    pass
 
 
 class ItemView(bgui.Image):
