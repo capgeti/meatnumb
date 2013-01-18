@@ -79,11 +79,13 @@ class HudView(DefaultView):
 
         weapons = playerController.player['weapons']
 
-        currentWeapon = playerController.currentWeaponObject
+        self.hpAnzeige.text = str(playerController.player['hp'])
+
+        currentWeapon = playerController.currentWeapon
         if currentWeapon:
             self.weaponNameLabel.text = currentWeapon.name
-            self.muniLabel.text = str(currentWeapon['schuss']).zfill(2) + " / " + str(currentWeapon['schusskapa']).zfill(2)
-            self.magazinLabel.text = str(currentWeapon['magazine']).zfill(2)
+            self.muniLabel.text = str(currentWeapon.schuss).zfill(2) + " / " + str(currentWeapon.schusskapa).zfill(2)
+            self.magazinLabel.text = str(currentWeapon.magazine).zfill(2)
         else:
             self.muniLabel.text = "- / -"
             self.weaponNameLabel.text = "Keine Waffe"
@@ -93,7 +95,7 @@ class HudView(DefaultView):
             item = self.items[i].itemImage
             itemImage = item.image
             if weapons[i]:
-                path = "textures/" + weapons[i] + ".png"
+                path = "textures/" + weapons[i].objName + ".png"
                 if itemImage != path:
                     item.visible = True
                     item.update_image(path)

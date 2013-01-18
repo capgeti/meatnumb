@@ -1,21 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9d709854-83cf-440a-94ce-08b05b0c012d" name="Default" comment="" />
+    <list default="true" id="9d709854-83cf-440a-94ce-08b05b0c012d" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/source/src/item.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/main.blend" afterPath="$PROJECT_DIR$/source/main.blend" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/objects/waffen.blend" afterPath="$PROJECT_DIR$/source/objects/waffen.blend" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/src/views/hudView.py" afterPath="$PROJECT_DIR$/source/src/views/hudView.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/meatnumb.iws" afterPath="$PROJECT_DIR$/meatnumb.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/src/playerController.py" afterPath="$PROJECT_DIR$/source/src/playerController.py" />
+    </list>
     <ignored path="meatnumb.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358462925419" ignored="false" />
+    <file path="/Dummy.txt" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358464997005" ignored="false" />
     <file path="/playerEntity.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358219122185" ignored="false" />
     <file path="/a.dummy" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358462401104" ignored="false" />
     <file path="/inventarView.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357955579900" ignored="false" />
     <file path="/defaultView.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358121727225" ignored="false" />
-    <file path="/item.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357081088186" ignored="false" />
+    <file path="/item.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358478301924" ignored="false" />
     <file path="/itemView.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357081775101" ignored="false" />
     <file path="/gameController.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358302018707" ignored="false" />
     <file path="/game.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358289087330" ignored="false" />
     <file path="/lodManager.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357012113941" ignored="false" />
     <file path="/mapManager.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357431957573" ignored="false" />
-    <file path="/playerController.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358462882310" ignored="false" />
+    <file path="/playerController.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358478884978" ignored="false" />
     <file path="/renderHelper.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357255978838" ignored="false" />
     <file path="/keyboardManager.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357950621961" ignored="false" />
     <file path="/view.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357263874296" ignored="false" />
@@ -38,7 +45,7 @@
     <file path="/widgetPresenter.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357782641866" ignored="false" />
     <file path="/defaultPresenter.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358118185121" ignored="false" />
     <file path="/optionPresenter.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358119841403" ignored="false" />
-    <file path="/hudView.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358462435238" ignored="false" />
+    <file path="/hudView.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358478854056" ignored="false" />
     <file path="/hudPresenter.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358216497989" ignored="false" />
     <file path="/gameMenuPresenter.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358218281200" ignored="false" />
     <file path="/modul2.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357869276778" ignored="false" />
@@ -113,9 +120,7 @@
         <entry file="file://$PROJECT_DIR$/source/src/views/mainView.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="20" column="63" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -124,9 +129,7 @@
         <entry file="file://$PROJECT_DIR$/source/src/views/highScoreView.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="16" column="28" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -134,7 +137,7 @@
       <file leaf-file-name="hudView.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/src/views/hudView.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="95" column="14" selection-start="3851" selection-end="3888" vertical-scroll-proportion="0.0">
+            <state line="81" column="64" selection-start="3232" selection-end="3232" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -155,16 +158,16 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="224" selection-end="230" vertical-scroll-proportion="-4.76">
+            <state line="13" column="13" selection-start="224" selection-end="230" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="menuController.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="menuController.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/src/menuController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="27" selection-start="351" selection-end="351" vertical-scroll-proportion="0.77816904">
+            <state line="13" column="27" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="e#0#49#0" expanded="true" />
               </folding>
@@ -172,13 +175,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="playerController.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="playerController.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/src/playerController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="150" column="4" selection-start="3999" selection-end="3999" vertical-scroll-proportion="0.0">
+            <state line="119" column="11" selection-start="3085" selection-end="3085" vertical-scroll-proportion="0.5283364">
               <folding>
-                <element signature="e#0#29#0" expanded="true" />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="item.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/src/item.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="10" column="38" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -187,9 +199,7 @@
         <entry file="file://$PROJECT_DIR$/source/src/views/defaultView.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="15" column="0" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -221,7 +231,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/source/src/controller/gameController.py" />
         <option value="$PROJECT_DIR$/source/src/gameState/views/gameMenuPresenter.py" />
         <option value="$PROJECT_DIR$/source/src/gameState/gameState.py" />
         <option value="$PROJECT_DIR$/source/src/menuState/menuState.py" />
@@ -234,8 +243,9 @@
         <option value="$PROJECT_DIR$/source/src/views/defaultView.py" />
         <option value="$PROJECT_DIR$/source/src/views/mainView.py" />
         <option value="$PROJECT_DIR$/source/guiStyle/theme.cfg" />
-        <option value="$PROJECT_DIR$/source/src/views/hudView.py" />
         <option value="$PROJECT_DIR$/source/src/weaponController.py" />
+        <option value="$PROJECT_DIR$/source/src/item.py" />
+        <option value="$PROJECT_DIR$/source/src/views/hudView.py" />
         <option value="$PROJECT_DIR$/source/src/playerController.py" />
       </list>
     </option>
@@ -295,6 +305,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -453,7 +464,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -461,14 +471,14 @@
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="fileTemplates" />
     <property name="MemberChooser.sorted" value="false" />
+    <property name="options.lastSelected" value="fileTemplates" />
+    <property name="recentsLimit" value="5" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -575,6 +585,14 @@
       <option name="USE_PARAM" value="false" />
       <method />
     </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -590,12 +608,17 @@
       <option name="PARAMETERS" value="" />
       <method />
     </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
@@ -624,19 +647,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -741,7 +751,11 @@
       <created>1358462926910</created>
       <updated>1358462926910</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="weapon hud view">
+      <created>1358464997274</created>
+      <updated>1358464997274</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -751,7 +765,6 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44276094" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39765102" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -769,6 +782,7 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44276094" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
@@ -811,7 +825,7 @@
     <option name="MAXIMUM_HISTORY_ROWS" value="1000" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix slot emptyness" />
+    <option name="LAST_COMMIT_MESSAGE" value="weapon hud view" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -830,6 +844,7 @@
     <MESSAGE value="adding multiple keys with different states for same callback,&#10;move playerKey reading in gameHudPresenter" />
     <MESSAGE value="inventarsystem, waffen aufsammeln" />
     <MESSAGE value="fix slot emptyness" />
+    <MESSAGE value="weapon hud view" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -837,11 +852,23 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/src/__init__.py">
+    <entry file="file://$PROJECT_DIR$/source/src/views/defaultView.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+        <state line="15" column="0" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
           <folding />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/src/gameController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="0" selection-start="24" selection-end="24" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/src/bgui/system.py">
@@ -854,9 +881,7 @@
     <entry file="file://$PROJECT_DIR$/source/src/views/highScoreView.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="28" selection-start="511" selection-end="511" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -870,18 +895,14 @@
     <entry file="file://$PROJECT_DIR$/source/src/views/defaultView.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="0" selection-start="388" selection-end="388" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/src/views/mainView.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="63" selection-start="871" selection-end="871" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -890,7 +911,7 @@
         <state />
       </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="13" selection-start="224" selection-end="230" vertical-scroll-proportion="-4.76">
+        <state line="13" column="13" selection-start="224" selection-end="230" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -909,13 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/src/views/hudView.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="95" column="14" selection-start="3851" selection-end="3888" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/src/weaponController.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="27" selection-start="74" selection-end="74" vertical-scroll-proportion="0.17957747">
@@ -923,20 +937,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/src/playerController.py">
+    <entry file="file://$PROJECT_DIR$/source/src/menuController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="150" column="4" selection-start="3999" selection-end="3999" vertical-scroll-proportion="0.0">
+        <state line="13" column="27" selection-start="351" selection-end="351" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/src/menuController.py">
+    <entry file="file://$PROJECT_DIR$/source/src/item.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="27" selection-start="351" selection-end="351" vertical-scroll-proportion="0.77816904">
+        <state line="10" column="38" selection-start="320" selection-end="320" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/src/views/hudView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="81" column="64" selection-start="3232" selection-end="3232" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/src/playerController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="11" selection-start="3085" selection-end="3085" vertical-scroll-proportion="0.5283364">
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
