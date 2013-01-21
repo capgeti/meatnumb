@@ -2,7 +2,7 @@ import random
 
 import bge
 from mathutils import Vector
-from src import item
+from src import item, waveController
 
 
 __author__ = 'capgeti'
@@ -38,7 +38,7 @@ def init(cont):
     player['weapons'] = [None for i in range(3)]
     player['currentWeaponSlot'] = -1
     player['hp'] = 100
-    player['speed'] = 3.5
+    player['speed'] = 5
 
 
 def dropCurrentWeapon():
@@ -80,9 +80,9 @@ def move(cont):
 
     if w or s or a or d:
     #        bge.logic.sendMessage("playAction", "gehen", "playerBones")
-        bones.playAction("gehenBeine", 1, 15, blendin=5, layer=0, play_mode=1)
+        bones.playAction("gehenBeine", 1, 13, blendin=5, layer=0, play_mode=1)
         if not currentWeaponObject:
-            bones.playAction("gehenArme", 1, 15, blendin=5, layer=1, play_mode=1)
+            bones.playAction("gehenArme", 1, 13, blendin=5, layer=1, play_mode=1)
 
         speed = player.get("speed", 0)
 
@@ -162,6 +162,18 @@ def shoot(cont):
             obj.alignAxisToVect(ray[2], 1, 1)
             obj.worldPosition = ray[1]
 
+            hitObject = ray[0]
+            if "enemy" in hitObject:
+                print("ha", hitObject['hp'])
+                hitObject['hp'] -= currentWeapon.damage
+                if hitObject['hp'] <= 0:
+                    enemies = waveController.currentEnemies
+                    del enemies[enemies.index(hitObject)]
+                    i = random.randint(1, 5)
+                    if i == 3:
+                        scene.addObject("ammoPistole", hitObject)
+                    hitObject.endObject()
+
         r = 3 + random.random() * 4
         e = r + 2 + random.random() * 2
         e = e if e < dist else dist
@@ -181,7 +193,6 @@ def shoot(cont):
             if currentWeapon.magazine <= 0:
                 return
             currentWeapon.schuss = currentWeapon.schusskapa
-
 
 
 def setWaffenSlot(slot, checkCurrent=True):
@@ -222,6 +233,19 @@ def pickUp(cont):
         if player['currentWeaponSlot'] == freeSlot:
             setWaffenSlot(player['currentWeaponSlot'], checkCurrent=False)
         pickUpObject.endObject()
+
+    if pickUpObject.get("useable") == "ammo":
+        weapon = getWeaponByName(pickUpObject["weapon"])
+        if not weapon: return
+        weapon.magazine += pickUpObject['magazines']
+        pickUpObject.endObject()
+
+
+def getWeaponByName(name):
+    for weapon in player['weapons']:
+        if weapon and weapon.objName == name:
+            return weapon
+    return None
 
 
 

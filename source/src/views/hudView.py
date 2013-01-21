@@ -1,5 +1,6 @@
+# coding=utf-8
 import bge
-from src import playerController
+from src import playerController, waveController
 import src.bgui as bgui
 from src.views.defaultView import DefaultView
 
@@ -21,9 +22,17 @@ class HudView(DefaultView):
         self.items = []
 
         self.createHPView(aspect)
+        self.createWaveView(aspect)
         self.createMunintionView(aspect)
         self.createItemList(aspect)
         self.createMainMenu()
+
+        cam = bge.logic.getCurrentScene().active_camera
+        cam.setViewport(0, bge.render.getWindowHeight(), bge.render.getWindowWidth(), 0)
+
+        for i in range(1):
+            bgui.Label(self, "freeLabel" + str(i), text="NICHTS", pt_size=self.ptGross)
+
 
     def createMainMenu(self):
         self.gameMenuFrame = bgui.Frame(self, "gameMenuFrame", size=[1, 1], sub_theme="dark")
@@ -39,7 +48,7 @@ class HudView(DefaultView):
     def createHPView(self, aspect):
         self.hpFrame = bgui.Frame(self, "hpFrame", border=1, pos=[0.01, 0.01], size=[0.1, 0.1 * aspect])
         bgui.Label(self.hpFrame, "hptext", text="Leben:", pt_size=self.ptGross, pos=[0.05, 0.7])
-        self.hpAnzeige = bgui.Label(self.hpFrame, "hpAnzeige", text="100", pt_size=self.ptSehrGross,  pos=[0.05, 0.1])
+        self.hpAnzeige = bgui.Label(self.hpFrame, "hpAnzeige", text="100", pt_size=self.ptSehrGross, pos=[0.05, 0.1])
 
     def createItemList(self, aspect):
         self.itemFrame = bgui.Frame(self, "itemFrame", size=[0.225, 0.068 * aspect], pos=[0.3875, 0.01],
@@ -79,8 +88,26 @@ class HudView(DefaultView):
 
         weapons = playerController.player['weapons']
 
+        # HP View
         self.hpAnzeige.text = str(playerController.player['hp'])
 
+        # enemy view
+        cam = bge.logic.getCurrentScene().active_camera
+        for i, e in enumerate(waveController.currentEnemies):
+            pos = cam.getScreenPosition(e)
+            #self.children.get("freeLabel"+str(i)).text = "aawdawd"
+
+        # Wave View
+        self.waveEnemiesRest.text = str(len(waveController.currentEnemies))
+        self.waveNumber.text = str(waveController.waveCounter)
+
+        if waveController.spawnTimer:
+            self.waveTitle.visible = True
+            self.waveTitle.text = "Nächste Welle in: " + str(waveController.spawnTimer)
+        else:
+            self.waveTitle.visible = False
+
+        # Weapon View
         currentWeapon = playerController.currentWeapon
         if currentWeapon:
             self.weaponNameLabel.text = currentWeapon.name
@@ -105,10 +132,21 @@ class HudView(DefaultView):
 
     def createMunintionView(self, aspect):
         self.muniFrame = bgui.Frame(self, "muniFrame", border=1, pos=[0.84, 0.01], size=[0.15, 0.1 * aspect])
-        self.weaponNameLabel = bgui.Label(self.muniFrame, "nameLabel", pt_size=self.ptNormal, text="Keine Waffe", pos=[0.05, 0.7])
+        self.weaponNameLabel = bgui.Label(self.muniFrame, "nameLabel", pt_size=self.ptNormal, text="Keine Waffe",
+            pos=[0.05, 0.7])
         self.muniLabel = bgui.Label(self.muniFrame, "muniLabel", pt_size=self.ptGross, text="- / -", pos=[0.05, 0.38])
         self.magazinLabel = bgui.Label(self.muniFrame, "magaLabel", pt_size=self.ptGross, text="-", pos=[0.7, 0.1])
 
+    def createWaveView(self, aspect):
+        self.waveFrame = bgui.Frame(self, "waveFrame", border=1, pos=[0.01, 0.85], size=[0.14, 0.07 * aspect])
+        bgui.Label(self.waveFrame, "waveLabel", text="Welle:", pt_size=self.ptNormal, pos=[0.01, 0.6])
+        self.waveNumber = bgui.Label(self.waveFrame, "waveNumber", text="-1", pt_size=self.ptNormal, pos=[0.72, 0.6])
+        bgui.Label(self.waveFrame, "waveEnemies", text="Aliens:", pt_size=self.ptNormal, pos=[0.01, 0.1])
+        self.waveEnemiesRest = bgui.Label(self.waveFrame, "waveEnemiesRest", text="-1", pt_size=self.ptNormal,
+            pos=[0.72, 0.1])
+
+        self.waveTitle = bgui.Label(self, "waveTitle", text="", pt_size=self.ptSehrGross,
+            options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERED)
 
 
 class ItemView(bgui.Image):
