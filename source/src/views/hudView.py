@@ -95,7 +95,9 @@ class HudView(DefaultView):
         cam = bge.logic.getCurrentScene().active_camera
         for i, e in enumerate(waveController.currentEnemies):
             pos = cam.getScreenPosition(e)
-            #self.children.get("freeLabel"+str(i)).text = "aawdawd"
+            textLabel = self.children.get("freeLabel" + str(i))
+            textLabel.text = "aawdawd"
+            textLabel.update_position()
 
         # Wave View
         self.waveEnemiesRest.text = str(len(waveController.currentEnemies))
@@ -108,7 +110,7 @@ class HudView(DefaultView):
             self.waveTitle.visible = False
 
         # Weapon View
-        currentWeapon = playerController.currentWeapon
+        currentWeapon = playerController.player['currentWeapon']
         if currentWeapon:
             self.weaponNameLabel.text = currentWeapon.name
             self.muniLabel.text = str(currentWeapon.schuss).zfill(2) + " / " + str(currentWeapon.schusskapa).zfill(2)
@@ -171,9 +173,9 @@ class ItemView(bgui.Image):
 
     def showHoverImage(self, image):
         self.hoverImage.visible = True
-        playerController.lockShoot = True
+        playerController.player['lockShoot'] = True
 
     def hideHoverImage(self, image):
         self.hoverImage.visible = False
-        playerController.lockShoot = False
+        playerController.player['lockShoot'] = False
 

@@ -4,32 +4,26 @@ import bge
 from mathutils import Vector
 from src import item, waveController
 
-
 __author__ = 'capgeti'
 
 player = None
-currentWeaponObject = None
-currentWeapon = None
-lockShoot = False
 
 def setCurrentWeapon(newWeapon):
     scene = bge.logic.getCurrentScene()
     weaponEmpty = scene.objects['waffenFokus']
 
-    global currentWeaponObject, currentWeapon
-    currentWeapon = newWeapon
-    currentWeaponObject = scene.addObject(newWeapon.objName, weaponEmpty)
-    currentWeaponObject.setParent(weaponEmpty)
+    player['currentWeapon'] = newWeapon
+    player['currentWeaponObject'] = scene.addObject(newWeapon.objName, weaponEmpty)
+    player['currentWeaponObject'].setParent(weaponEmpty)
 
-    player.sensors['left'].frequency = currentWeapon.abklingzeit
+    player.sensors['left'].frequency = player['currentWeapon'].abklingzeit
 
 
 def removeCurrentWeapon():
-    global currentWeapon, currentWeaponObject
-    if currentWeapon:
-        currentWeaponObject.endObject()
-    currentWeaponObject = None
-    currentWeapon = None
+    if player['currentWeapon']:
+        player['currentWeaponObject'].endObject()
+    player['currentWeaponObject'] = None
+    player['currentWeapon'] = None
 
 
 def init(cont):
@@ -37,38 +31,42 @@ def init(cont):
     player = cont.owner
     player['weapons'] = [None for i in range(3)]
     player['currentWeaponSlot'] = -1
-    player['hp'] = 100
+    player['hp'] = 4
     player['speed'] = 5
+    player['currentWeaponObject'] = None
+    player['currentWeapon'] = None
+    player['lockShoot'] = False
+    player['isTot'] = False
+    player['kills'] = 0
 
 
 def dropCurrentWeapon():
-    global currentWeapon, currentWeaponObject
-
-    if not currentWeapon:
+    if not player['currentWeapon']:
         return
 
     try:
         currentslot = player['currentWeaponSlot']
         player['weapons'][currentslot] = None
 
-        currentWeaponObject.removeParent()
-        currentWeaponObject.orientation = player.orientation
-        currentWeaponObject.applyForce((0, 160, 50), True)
-        currentWeaponObject['weapon'] = currentWeapon
+        player['currentWeaponObject'].removeParent()
+        player['currentWeaponObject'].orientation = player.orientation
+        player['currentWeaponObject'].applyForce((0, 160, 50), True)
+        player['currentWeaponObject']['weapon'] = player['currentWeapon']
 
-        currentWeaponObject = None
-        currentWeapon = None
+        player['currentWeaponObject'] = None
+        player['currentWeapon'] = None
     except IndexError:
         return
 
 
 def updatePlayerLookAt(cont):
+    if player['isTot']: return
     over = cont.sensors["overAny"]
     if over.positive and not "useable" in over.hitObject:
         cont.owner.position = over.hitPosition
 
 
-def move(cont):
+def loop(cont):
     keyboard = bge.logic.keyboard.events
 
     w = keyboard[bge.events.WKEY] == 2
@@ -78,10 +76,14 @@ def move(cont):
 
     bones = player.children['playerBones']
 
+    if player['isTot'] and not bones.isPlayingAction(3):
+        player.suspendDynamics()
+        return
+
+
     if w or s or a or d:
-    #        bge.logic.sendMessage("playAction", "gehen", "playerBones")
         bones.playAction("gehenBeine", 1, 13, blendin=5, layer=0, play_mode=1)
-        if not currentWeaponObject:
+        if not player['currentWeaponObject']:
             bones.playAction("gehenArme", 1, 13, blendin=5, layer=1, play_mode=1)
 
         speed = player.get("speed", 0)
@@ -95,7 +97,7 @@ def move(cont):
         player["vel"] = Vector((x, y, 0))
     else:
         bones.playAction("stehenBeine", 1, 1, blendin=2, layer=0, play_mode=1)
-        if not currentWeaponObject:
+        if not player['currentWeaponObject']:
             bones.playAction("stehenArme", 1, 1, blendin=2, layer=1, play_mode=1)
 
     if not player.get("vel"):
@@ -107,6 +109,11 @@ def move(cont):
     velNew.z = player.getLinearVelocity()[2]
 
     player.setLinearVelocity(velNew)
+
+    if player['hp'] <= 0:
+        player['lockShoot'] = True
+        player['isTot'] = True
+        bones.playAction("sterben", 1, 11, blendin=4, layer=3, play_mode=0)
 
 
 def handleZoom(cont):
@@ -142,13 +149,13 @@ def drawShootLine(startCount, endCount, color):
 def shoot(cont):
     click = cont.sensors['left']
 
-    if click.positive and currentWeapon and not lockShoot and currentWeapon.schuss:
+    if click.positive and player['currentWeapon'] and not player['lockShoot'] and player['currentWeapon'].schuss:
         bones = player.children['playerBones']
         bones.playAction("schuss", 1, 5, blendin=2, layer=1, play_mode=0)
 
         scene = bge.logic.getCurrentScene()
-        obj = scene.addObject("ShootSplash", currentWeaponObject.children[0], 1)
-        obj.setParent(currentWeaponObject)
+        obj = scene.addObject("ShootSplash", player['currentWeaponObject'].children[0], 1)
+        obj.setParent(player['currentWeaponObject'])
 
         shootFrom = player.children['ShootFrom']
         shootTo = shootFrom.children['ShootTo']
@@ -165,7 +172,7 @@ def shoot(cont):
             hitObject = ray[0]
             if "enemy" in hitObject:
                 print("ha", hitObject['hp'])
-                hitObject['hp'] -= currentWeapon.damage
+                hitObject['hp'] -= player['currentWeapon'].damage
                 if hitObject['hp'] <= 0:
                     enemies = waveController.currentEnemies
                     del enemies[enemies.index(hitObject)]
@@ -186,13 +193,13 @@ def shoot(cont):
         r = r if r < dist else dist
         drawShootLine(r, e, (1, 1, 0.4))
 
-        currentWeapon.schuss -= 1
+        player['currentWeapon'].schuss -= 1
 
-        if currentWeapon.schuss <= 0:
-            currentWeapon.magazine -= 1
-            if currentWeapon.magazine <= 0:
+        if player['currentWeapon'].schuss <= 0:
+            player['currentWeapon'].magazine -= 1
+            if player['currentWeapon'].magazine <= 0:
                 return
-            currentWeapon.schuss = currentWeapon.schusskapa
+            player['currentWeapon'].schuss = player['currentWeapon'].schusskapa
 
 
 def setWaffenSlot(slot, checkCurrent=True):
@@ -206,7 +213,7 @@ def setWaffenSlot(slot, checkCurrent=True):
 
         bones = player.children['playerBones']
         if not newWeapon:
-            if currentWeapon:
+            if player['currentWeapon']:
                 bones.playAction("waffetragen", 5, 1, blendin=2, layer=2, play_mode=0)
             return
 
