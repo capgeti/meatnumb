@@ -11,7 +11,7 @@ class HudView(DefaultView):
 
         self.ptNormal = int(bge.render.getWindowHeight() / 12)
         self.ptGross = int(bge.render.getWindowHeight() / 9)
-        self.ptSehrGross = int(bge.render.getWindowHeight() / 8)
+        self.ptSehrGross = int(bge.render.getWindowHeight() / 7)
 
         width = bge.render.getWindowWidth()
         height = bge.render.getWindowHeight()
@@ -22,17 +22,40 @@ class HudView(DefaultView):
         self.items = []
 
         self.createHPView(aspect)
+        self.createPointView(aspect)
         self.createWaveView(aspect)
         self.createMunintionView(aspect)
         self.createItemList(aspect)
         self.createMainMenu()
 
+        # Game Over Label
+        self.gameOverFrame = bgui.Frame(self, "gameOverFrame", size=[1, 1], sub_theme="dark")
+        self.gameOver = bgui.Frame(self.gameOverFrame, "gameOver", size=[0.4, 0.7], pos=[0.35, 0.15], border=1)
+
+        self.gameOverLabel = bgui.Label(self.gameOver, "gameOverLabel", text="Game Over!", pt_size=self.ptSehrGross,
+            pos=[0.1, 0.83])
+        self.gameOverPunktestand = bgui.Label(self.gameOver, "gameOverPunktestand", text="Punkte:",
+            pt_size=self.ptGross, pos=[0.1, 0.67])
+
+        self.gameOverNameLabel = bgui.Label(self.gameOver, "gameOverNameLabel", text="Bitte gib deinen Namen ein:",
+            pt_size=self.ptNormal,
+            pos=[0.1, 0.55])
+
+        self.gameOverSaveButton = bgui.FrameButton(self.gameOver, "saveButton", text="Eintragen", pt_size=self.ptNormal,
+        size=[0.4, 0.1], pos=[0.05, 0.05])
+        self.gameOverSaveButton.on_click = self.savePoints
+
+        self.gameOverCancelButton = bgui.FrameButton(self.gameOver, "gameOverCancelButton", text="Hauptmenü", pt_size=self.ptNormal,
+        size=[0.4, 0.1], pos=[0.55, 0.05])
+        self.gameOverCancelButton.on_click = self.showMainMenu
+
+        self.gameOverNameBox = bgui.TextInput(self.gameOver, "gameOverNameBox", text="<Name>", pt_size=self.ptNormal,
+            pos=[0.1, 0.4], size=[0.8, 0.1], input_options=bgui.BGUI_INPUT_SELECT_ALL)
+
+        self.gameOverFrame.visible = False
+
         cam = bge.logic.getCurrentScene().active_camera
         cam.setViewport(0, bge.render.getWindowHeight(), bge.render.getWindowWidth(), 0)
-
-        for i in range(1):
-            bgui.Label(self, "freeLabel" + str(i), text="NICHTS", pt_size=self.ptGross)
-
 
     def createMainMenu(self):
         self.gameMenuFrame = bgui.Frame(self, "gameMenuFrame", size=[1, 1], sub_theme="dark")
@@ -60,15 +83,20 @@ class HudView(DefaultView):
             self.items.append(itemBox)
 
     def update_keyboard(self, key, is_shifted):
-        if key == 218: # ESC
-            self.gameMenuFrame.visible = not self.gameMenuFrame.visible
+        DefaultView.update_keyboard(self, key, is_shifted)
 
-        for i in range(self.itemcount):
-            if key == str(i + 1):
-                self.selectItem(self.items[i])
+        if playerController.player['isTot']:
+            pass
+        else:
+            if key == 218: # ESC
+                self.gameMenuFrame.visible = not self.gameMenuFrame.visible
 
-        if key == "q":
-            playerController.dropCurrentWeapon()
+            for i in range(self.itemcount):
+                if key == str(i + 1):
+                    self.selectItem(self.items[i])
+
+            if key == "q":
+                playerController.dropCurrentWeapon()
 
     def resumeGame(self, button):
         self.gameMenuFrame.visible = False
@@ -77,7 +105,21 @@ class HudView(DefaultView):
         bge.logic.addScene("Main", 0)
         bge.logic.getCurrentScene().end()
 
+    def showHighScoreMenu(self, button):
+        bge.logic.addScene("highScore", 0)
+        bge.logic.getCurrentScene().end()
+
+    def savePoints(self, button):
+        bge.logic.loadGlobalDict()
+        if not "highScore"  in bge.logic.globalDict:
+            bge.logic.globalDict['highScore'] = list()
+        bge.logic.globalDict['highScore'].append((self.gameOverNameBox.text, playerController.player['points']))
+        bge.logic.saveGlobalDict()
+        self.showHighScoreMenu(button)
+
     def selectItem(self, item):
+        if playerController.player['isTot']:
+            return
         for i in range(self.itemcount):
             self.items[i].activeImage.visible = False
         item.activeImage.visible = True
@@ -86,18 +128,20 @@ class HudView(DefaultView):
     def main(self):
         DefaultView.main(self)
 
+        if playerController.player['isTot']:
+            if not self.gameOverFrame.visible:
+                self.gameOverFrame.visible = True
+                self.gameOverPunktestand.text = "Punkte: " + str(playerController.player['points'])
+                self.gameOverNameBox.activate()
+            return
+
         weapons = playerController.player['weapons']
 
         # HP View
         self.hpAnzeige.text = str(playerController.player['hp'])
 
-        # enemy view
-        cam = bge.logic.getCurrentScene().active_camera
-        for i, e in enumerate(waveController.currentEnemies):
-            pos = cam.getScreenPosition(e)
-            textLabel = self.children.get("freeLabel" + str(i))
-            textLabel.text = "aawdawd"
-            textLabel.update_position()
+        # Points View
+        self.points.text = str(playerController.player['points'])
 
         # Wave View
         self.waveEnemiesRest.text = str(len(waveController.currentEnemies))
@@ -149,6 +193,12 @@ class HudView(DefaultView):
 
         self.waveTitle = bgui.Label(self, "waveTitle", text="", pt_size=self.ptSehrGross,
             options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERED)
+
+    def createPointView(self, aspect):
+        self.pointFrame = bgui.Frame(self, "pointFrame", border=1, pos=[0.79, 0.91], size=[0.2, 0.04 * aspect])
+        self.pointLabel = bgui.Label(self.pointFrame, "pointLabel", pt_size=self.ptNormal, text="Punkte:",
+            pos=[0.05, 0.3])
+        self.points = bgui.Label(self.pointFrame, "points", pt_size=self.ptGross, text="0", pos=[0.6, 0.3])
 
 
 class ItemView(bgui.Image):

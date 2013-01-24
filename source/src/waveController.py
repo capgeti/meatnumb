@@ -49,12 +49,12 @@ class SpawnUtil(threading.Thread):
         SpawnUtil.locker.release()
 
 
-spawnPoints = list()
-spawnTime = 2
-spawnTimer = spawnTime
-timerInit = time.time()
-waveCounter = 0
-fullSpawned = False
+spawnPoints = None
+spawnTime = None
+spawnTimer = None
+timerInit = None
+waveCounter = None
+fullSpawned = None
 
 currentEnemies = []
 
@@ -68,6 +68,16 @@ waves = [
 
 
 def init(handle):
+    global spawnTime, spawnTimer, waveCounter, fullSpawned, currentEnemies, spawnPoints
+
+    spawnPoints = list()
+    spawnTime = 3
+    spawnTimer = spawnTime
+    waveCounter = 0
+    fullSpawned = False
+
+    currentEnemies = []
+
     scene = bge.logic.getCurrentScene()
     handle['spawnTimer'] = 0
 
@@ -82,7 +92,7 @@ def getRandomSpawnPoint():
 
 
 def calcSpawnTime(handle):
-    global spawnTimer, timerInit, fullSpawned
+    global spawnTimer, fullSpawned
 
     if not currentEnemies and fullSpawned:
         handle['spawnTimer'] = 0

@@ -13,7 +13,7 @@ class Weapon:
 
 class Pistole(Weapon):
     def __init__(self):
-        Weapon.__init__(self, 15, "Pistole", 8, 8, 2, 20, "weapon01")
+        Weapon.__init__(self, 15, "Pistole", 8, 8, 1, 20, "weapon01")
 
 
 class Mp(Weapon):

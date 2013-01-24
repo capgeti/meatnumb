@@ -31,18 +31,17 @@ def init(cont):
     player = cont.owner
     player['weapons'] = [None for i in range(3)]
     player['currentWeaponSlot'] = -1
-    player['hp'] = 4
+    player['hp'] = 2
     player['speed'] = 5
     player['currentWeaponObject'] = None
     player['currentWeapon'] = None
     player['lockShoot'] = False
     player['isTot'] = False
-    player['kills'] = 0
+    player['points'] = 0
 
 
 def dropCurrentWeapon():
-    if not player['currentWeapon']:
-        return
+    if player['isTot'] or not player['currentWeapon']: return
 
     try:
         currentslot = player['currentWeaponSlot']
@@ -76,10 +75,10 @@ def loop(cont):
 
     bones = player.children['playerBones']
 
-    if player['isTot'] and not bones.isPlayingAction(3):
-        player.suspendDynamics()
+    if player['isTot']:
+        if not bones.isPlayingAction(2):
+            player.suspendDynamics()
         return
-
 
     if w or s or a or d:
         bones.playAction("gehenBeine", 1, 13, blendin=5, layer=0, play_mode=1)
@@ -113,10 +112,13 @@ def loop(cont):
     if player['hp'] <= 0:
         player['lockShoot'] = True
         player['isTot'] = True
-        bones.playAction("sterben", 1, 11, blendin=4, layer=3, play_mode=0)
+        bones.playAction("sterben", 1, 11, blendin=4, layer=2, play_mode=0, priority=0)
+        bones.stopAction(0)
+        bones.stopAction(1)
 
 
 def handleZoom(cont):
+    if player['isTot']: return
     mouseUp = cont.sensors['up'].positive
     mouseDown = cont.sensors['down'].positive
 
@@ -133,76 +135,84 @@ def handleZoom(cont):
     cameraRotater.scaling = (neu, neu, neu)
 
 
-def drawShootLine(startCount, endCount, color):
-    shootFrom = player.children['ShootFrom']
-    shootTo = shootFrom.children['ShootTo']
-
-    froW = shootFrom.worldPosition.copy()
-    toW = shootTo.worldPosition.copy()
-
-    start = froW + ((toW - froW) * startCount)
-    ende = start + ((toW - froW) * endCount)
-
+def drawShootLine(shootFrom, shootTo, startCount, endCount, color):
+    diff = shootTo - shootFrom
+    start = shootFrom + (diff * startCount)
+    ende = shootFrom + (diff * endCount)
     bge.render.drawLine(start, ende, color)
 
 
 def shoot(cont):
     click = cont.sensors['left']
 
-    if click.positive and player['currentWeapon'] and not player['lockShoot'] and player['currentWeapon'].schuss:
-        bones = player.children['playerBones']
-        bones.playAction("schuss", 1, 5, blendin=2, layer=1, play_mode=0)
+    if not click.positive or not player['currentWeapon'] or player['lockShoot'] or not player['currentWeapon'].schuss:
+        return
 
-        scene = bge.logic.getCurrentScene()
-        obj = scene.addObject("ShootSplash", player['currentWeaponObject'].children[0], 1)
-        obj.setParent(player['currentWeaponObject'])
+    if player['isTot']: return
 
-        shootFrom = player.children['ShootFrom']
-        shootTo = shootFrom.children['ShootTo']
+    bones = player.children['playerBones']
+    bones.playAction("schuss", 1, 5, blendin=2, layer=1, play_mode=0)
 
-        dist = 1000
-        ray = shootFrom.rayCast(shootTo, None, dist)
+    scene = bge.logic.getCurrentScene()
+    obj = scene.addObject("ShootSplash", player['currentWeaponObject'].children[0], 1)
+    obj.setParent(player['currentWeaponObject'])
 
-        if ray[1]:
-            dist = shootFrom.getDistanceTo(ray[0]) * 3
-            obj = scene.addObject("BulletHole", ray[0], 100)
-            obj.alignAxisToVect(ray[2], 1, 1)
-            obj.worldPosition = ray[1]
+    shootFrom = player.children['ShootFrom']
+    shootTo = scene.objects['playerLookAt']
 
-            hitObject = ray[0]
-            if "enemy" in hitObject:
-                print("ha", hitObject['hp'])
-                hitObject['hp'] -= player['currentWeapon'].damage
-                if hitObject['hp'] <= 0:
-                    enemies = waveController.currentEnemies
-                    del enemies[enemies.index(hitObject)]
-                    i = random.randint(1, 5)
-                    if i == 3:
-                        scene.addObject("ammoPistole", hitObject)
-                    hitObject.endObject()
+    dist = 1000
+    ray = shootFrom.rayCast(shootTo, None, dist)
 
-        r = 3 + random.random() * 4
-        e = r + 2 + random.random() * 2
-        e = e if e < dist else dist
-        r = r if r < dist else dist
-        drawShootLine(r, e, (1, 1, 0.5))
+    dist = shootFrom.getDistanceTo(ray[1]) * 3
+    obj = scene.addObject("BulletHole", ray[0], 100)
+    obj.alignAxisToVect(ray[2], 1, 1)
+    obj.worldPosition = ray[1]
+    obj.setParent(ray[0])
 
-        r = 18 + random.random() * 10
-        e = r + 2 + random.random() * 5
-        e = e if e < dist else dist
-        r = r if r < dist else dist
-        drawShootLine(r, e, (1, 1, 0.4))
+    player['points'] -= 1
+    if player['points'] < 0:
+        player['points'] = 0
 
-        player['currentWeapon'].schuss -= 1
+    hitObject = ray[0]
+    if "enemy" in hitObject:
+        hitObject['hp'] -= player['currentWeapon'].damage
 
-        if player['currentWeapon'].schuss <= 0:
-            player['currentWeapon'].magazine -= 1
-            if player['currentWeapon'].magazine <= 0:
-                return
-            player['currentWeapon'].schuss = player['currentWeapon'].schusskapa
+        if hitObject['hp'] <= 0:
+            enemies = waveController.currentEnemies
+            del enemies[enemies.index(hitObject)]
+            player['points'] += 10
+            i = random.randint(1, 5)
+            if i == 3:
+                scene.addObject("ammoPistole", hitObject)
+
+            hitObject.suspendDynamics()
+
+    froW = shootFrom.worldPosition.copy()
+
+    start = random.random() * 0.2
+    endFirst = start + (random.random() * 0.3)
+    endFirst2 = endFirst + (random.random() * 0.5)
+
+    drawShootLine(froW, ray[1], start, endFirst, (1, 1, 0.5))
+    drawShootLine(froW, ray[1], endFirst2, 1, (1, 1, 0.5))
+
+    player['currentWeapon'].schuss -= 1
+
+    checkReload()
+
+
+def checkReload():
+    if player['currentWeapon'] and player['currentWeapon'].schuss <= 0:
+        player['currentWeapon'].magazine -= 1
+        if player['currentWeapon'].magazine < 0:
+            player['currentWeapon'].magazine = 0
+            return
+        player['currentWeapon'].schuss = player['currentWeapon'].schusskapa
 
 
 def setWaffenSlot(slot, checkCurrent=True):
+    if player['isTot']: return
+
     if slot == player['currentWeaponSlot'] and checkCurrent:
         return
 
@@ -226,6 +236,8 @@ def setWaffenSlot(slot, checkCurrent=True):
 
 
 def pickUp(cont):
+    if player['isTot']: return
+
     collision = cont.sensors['colli']
     if not collision.positive:
         return
@@ -246,6 +258,7 @@ def pickUp(cont):
         if not weapon: return
         weapon.magazine += pickUpObject['magazines']
         pickUpObject.endObject()
+        checkReload()
 
 
 def getWeaponByName(name):
