@@ -21,6 +21,7 @@ class HudView(DefaultView):
         self.itemcount = 3
         self.items = []
 
+
         self.createHPView(aspect)
         self.createPointView(aspect)
         self.createWaveView(aspect)
@@ -29,8 +30,7 @@ class HudView(DefaultView):
         self.createMainMenu()
 
         # Game Over Label
-        self.gameOverFrame = bgui.Frame(self, "gameOverFrame", size=[1, 1], sub_theme="dark")
-        self.gameOver = bgui.Frame(self.gameOverFrame, "gameOver", size=[0.4, 0.7], pos=[0.35, 0.15], border=1)
+        self.gameOver = bgui.Frame(self, "gameOver", size=[0.4, 0.7], pos=[0.35, 0.15], border=1)
 
         self.gameOverLabel = bgui.Label(self.gameOver, "gameOverLabel", text="Game Over!", pt_size=self.ptSehrGross,
             pos=[0.1, 0.83])
@@ -52,21 +52,18 @@ class HudView(DefaultView):
         self.gameOverNameBox = bgui.TextInput(self.gameOver, "gameOverNameBox", text="<Name>", pt_size=self.ptNormal,
             pos=[0.1, 0.4], size=[0.8, 0.1], input_options=bgui.BGUI_INPUT_SELECT_ALL)
 
-        self.gameOverFrame.visible = False
-
-        cam = bge.logic.getCurrentScene().active_camera
-        cam.setViewport(0, bge.render.getWindowHeight(), bge.render.getWindowWidth(), 0)
+        self.gameOver.visible = False
+        print("init")
 
     def createMainMenu(self):
-        self.gameMenuFrame = bgui.Frame(self, "gameMenuFrame", size=[1, 1], sub_theme="dark")
-        self.gameMenu = bgui.Frame(self.gameMenuFrame, "gameMenu", size=[0.3, 0.7], pos=[0.35, 0.15], border=1)
+        self.gameMenu = bgui.Frame(self, "gameMenu", size=[0.3, 0.7], pos=[0.35, 0.15], border=1)
         self.resumeGameButton = bgui.FrameButton(self.gameMenu, 'resumeGameButton', text='Weiter',
-            pt_size=self.ptNormal, size=[0.7, 0.1], pos=[0.3, 0.75], options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERX);
+            pt_size=self.ptNormal, size=[0.7, 0.1], pos=[0.3, 0.75], options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERX)
         self.resumeGameButton.on_click = self.resumeGame
         self.mainMenuButton = bgui.FrameButton(self.gameMenu, 'mainMenuButton', text='Hauptmenü',
-            pt_size=self.ptNormal, size=[0.7, 0.1], pos=[0.3, 0.55], options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERX);
+            pt_size=self.ptNormal, size=[0.7, 0.1], pos=[0.3, 0.55], options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERX)
         self.mainMenuButton.on_click = self.showMainMenu
-        self.gameMenuFrame.visible = False
+        self.gameMenu.visible = False
 
     def createHPView(self, aspect):
         self.hpFrame = bgui.Frame(self, "hpFrame", border=1, pos=[0.01, 0.01], size=[0.1, 0.1 * aspect])
@@ -89,7 +86,7 @@ class HudView(DefaultView):
             pass
         else:
             if key == 218: # ESC
-                self.gameMenuFrame.visible = not self.gameMenuFrame.visible
+                self.gameMenu.visible = not self.gameMenu.visible
 
             for i in range(self.itemcount):
                 if key == str(i + 1):
@@ -99,7 +96,7 @@ class HudView(DefaultView):
                 playerController.dropCurrentWeapon()
 
     def resumeGame(self, button):
-        self.gameMenuFrame.visible = False
+        self.gameMenu.visible = False
 
     def showMainMenu(self, button):
         bge.logic.addScene("Main", 0)
@@ -114,6 +111,7 @@ class HudView(DefaultView):
         if not "highScore"  in bge.logic.globalDict:
             bge.logic.globalDict['highScore'] = list()
         bge.logic.globalDict['highScore'].append((self.gameOverNameBox.text, playerController.player['points']))
+        bge.logic.globalDict['highScore'] = bge.logic.globalDict['highScore'][0:10]
         bge.logic.saveGlobalDict()
         self.showHighScoreMenu(button)
 
@@ -129,8 +127,8 @@ class HudView(DefaultView):
         DefaultView.main(self)
 
         if playerController.player['isTot']:
-            if not self.gameOverFrame.visible:
-                self.gameOverFrame.visible = True
+            if not self.gameOver.visible:
+                self.gameOver.visible = True
                 self.gameOverPunktestand.text = "Punkte: " + str(playerController.player['points'])
                 self.gameOverNameBox.activate()
             return

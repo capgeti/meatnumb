@@ -1,34 +1,30 @@
 import time
 import random
 import threading
-
 import bge
+import copy
 
 
 __author__ = 'capgeti'
 
 
 class SpawnUtil(threading.Thread):
-    locker = threading.Lock()
 
-    def __init__(self, waveData):
+    def __init__(self, waveData, level):
         super().__init__()
-        self.waveData = list(waveData)
+        self.waveData = copy.deepcopy(waveData)
+        self.level = level
 
     def spawnMob(self, enemy):
-        SpawnUtil.locker.acquire()
         scene = bge.logic.getCurrentScene()
         enemyObject = scene.addObject(enemy, getRandomSpawnPoint())
         currentEnemies.append(enemyObject)
-        SpawnUtil.locker.release()
 
     def run(self):
         randomMobs = self.waveData[0]
 
-        SpawnUtil.locker.acquire()
         global fullSpawned
         fullSpawned = False
-        SpawnUtil.locker.release()
 
         for i in range(sum(randomMobs.values())):
             enemy = random.choice(list(randomMobs.keys()))
@@ -38,15 +34,13 @@ class SpawnUtil(threading.Thread):
             if randomMobs[enemy] == 0:
                 del randomMobs[enemy]
 
-            time.sleep(1)
+            spawnTime = 1 - min(0.7, self.level / 50)
+            time.sleep(spawnTime)
 
         if len(self.waveData) > 1:
             self.spawnMob(self.waveData[1])
 
-
-        SpawnUtil.locker.acquire()
         fullSpawned = True
-        SpawnUtil.locker.release()
 
 
 spawnPoints = None
@@ -57,15 +51,6 @@ waveCounter = None
 fullSpawned = None
 
 currentEnemies = []
-
-waves = [
-    [{"enemy01": 20}],
-    [{"enemy01": 4}],
-    [{"enemy01": 7}],
-    [{"enemy01": 10}],
-    [{"enemy01": 14}],
-]
-
 
 def init(handle):
     global spawnTime, spawnTimer, waveCounter, fullSpawned, currentEnemies, spawnPoints
@@ -84,6 +69,7 @@ def init(handle):
     for obj in scene.objects:
         if "spawnPoint" in obj.name:
             spawnPoints.append(obj)
+            scene.addObject("alienSpawn", obj)
 
 
 def getRandomSpawnPoint():
@@ -106,7 +92,7 @@ def calcSpawnTime(handle):
 
     if spawnTimer == 0:
         global waveCounter
-        SpawnUtil(waves[waveCounter]).start()
+        SpawnUtil([{"enemy01": int((waveCounter + 1) * 3)}], waveCounter).start()
         waveCounter += 1
 
 

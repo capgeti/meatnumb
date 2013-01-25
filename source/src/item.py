@@ -18,7 +18,7 @@ class Pistole(Weapon):
 
 class Mp(Weapon):
     def __init__(self):
-        Weapon.__init__(self, 5, "MP", 32, 32, 2, 5, "weapon02")
+        Weapon.__init__(self, 10, "MP", 32, 32, 2, 5, "weapon02")
 
 
 wrapper = {

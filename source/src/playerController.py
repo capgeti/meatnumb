@@ -1,12 +1,18 @@
 import random
-
 import bge
+import aud
 from mathutils import Vector
 from src import item, waveController
 
 __author__ = 'capgeti'
 
 player = None
+
+device = aud.device()
+
+def playSound(file):
+    device.play(aud.Factory("sounds/" + file))
+
 
 def setCurrentWeapon(newWeapon):
     scene = bge.logic.getCurrentScene()
@@ -31,10 +37,11 @@ def init(cont):
     player = cont.owner
     player['weapons'] = [None for i in range(3)]
     player['currentWeaponSlot'] = -1
-    player['hp'] = 2
+    player['hp'] = 100
     player['speed'] = 5
     player['currentWeaponObject'] = None
     player['currentWeapon'] = None
+    player['spawnTimer'] = 1000
     player['lockShoot'] = False
     player['isTot'] = False
     player['points'] = 0
@@ -146,9 +153,16 @@ def shoot(cont):
     click = cont.sensors['left']
 
     if not click.positive or not player['currentWeapon'] or player['lockShoot'] or not player['currentWeapon'].schuss:
+        if not player['currentWeapon'].schuss:
+            playSound("leer.wav")
         return
 
     if player['isTot']: return
+
+    if player['currentWeapon'].objName == "weapon01":
+        playSound("pistol.wav")
+    else:
+        playSound("mp.wav")
 
     bones = player.children['playerBones']
     bones.playAction("schuss", 1, 5, blendin=2, layer=1, play_mode=0)
@@ -177,14 +191,20 @@ def shoot(cont):
     if "enemy" in hitObject:
         hitObject['hp'] -= player['currentWeapon'].damage
 
-        if hitObject['hp'] <= 0:
+        if hitObject['hp'] <= 0 and not hitObject.get("tot"):
             enemies = waveController.currentEnemies
             del enemies[enemies.index(hitObject)]
             player['points'] += 10
+
             i = random.randint(1, 5)
             if i == 3:
-                scene.addObject("ammoPistole", hitObject)
+                i2 = random.randint(1, 2)
+                if i2 == 1:
+                    scene.addObject("ammoPistole", hitObject)
+                else:
+                    scene.addObject("ammoMp", hitObject)
 
+            hitObject['tot'] = True
             hitObject.suspendDynamics()
 
     froW = shootFrom.worldPosition.copy()

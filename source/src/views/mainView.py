@@ -11,11 +11,13 @@ class MainView(DefaultView):
         self.ptGross = int(bge.render.getWindowHeight() / 3)
         self.ptKlein = int(bge.render.getWindowHeight() / 20)
 
-        bgui.Label(self, "mainLabel", pos=[0.4, 0.5], text="Meat-NUMB", pt_size=self.ptGross,
-            options=bgui.BGUI_DEFAULT)
-        bgui.Label(self, "cLabel", pos=[0, 0], text="(c) 2013, capgeti", pt_size=self.ptKlein)
+        self.bgImage = bgui.Image(self, "bgImage", img="textures/bg.JPG", size=[1, 1])
 
-        self.gameMenu = bgui.Frame(self, "gameMenu", size=[0.3, 0.7], pos=[0.02, 0.15], border=1)
+        bgui.Label(self.bgImage, "mainLabel", pos=[0.4, 0.5], text="Meat-NUMB", pt_size=self.ptGross,
+            options=bgui.BGUI_DEFAULT)
+        bgui.Label(self.bgImage, "cLabel", pos=[0, 0], text="(c) 2013, capgeti, v0.9", pt_size=self.ptKlein)
+
+        self.gameMenu = bgui.Frame(self.bgImage, "gameMenu", size=[0.3, 0.7], pos=[0.02, 0.15], border=1)
 
         self.newGameButton = bgui.FrameButton(self.gameMenu, 'newGameButton', text='Neues Spiel', pt_size=self.ptNormal,
             size=[0.7, 0.1], pos=[0.3, 0.75], options=bgui.BGUI_DEFAULT | bgui.BGUI_CENTERX)
