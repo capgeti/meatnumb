@@ -6,15 +6,16 @@ from src.views.defaultView import DefaultView
 class MainView(DefaultView):
     def __init__(self):
         DefaultView.__init__(self)
+        path = bge.logic.expandPath("//")
 
-        self.ptNormal = int(bge.render.getWindowHeight() / 10)
-        self.ptGross = int(bge.render.getWindowHeight() / 3)
-        self.ptKlein = int(bge.render.getWindowHeight() / 20)
+        self.bgImage = bgui.Image(self, "bgImage", img=path+"textures/bg.JPG", size=[1, 1])
 
-        self.bgImage = bgui.Image(self, "bgImage", img="textures/bg.JPG", size=[1, 1])
-
-        bgui.Label(self.bgImage, "mainLabel", pos=[0.4, 0.5], text="Meat-NUMB", pt_size=self.ptGross,
+        bgui.Label(self.bgImage, "mainLabel", pos=[0.4, 0.6], text="Meat-NUMB", pt_size=self.ptGross,
             options=bgui.BGUI_DEFAULT)
+
+        bgui.Label(self.bgImage, "mainSteruerungWASD", pos=[0.4, 0.5], text="WASD: Bewegen\nMaus: Drehen\nKlick: Schießen\n1-3: Slot wählen\nQ: Waffe fallen lassen\nESC: Menü", pt_size=self.ptNormal,
+            options=bgui.BGUI_DEFAULT)
+
         bgui.Label(self.bgImage, "cLabel", pos=[0, 0], text="(c) 2013, capgeti, v0.9", pt_size=self.ptKlein)
 
         self.gameMenu = bgui.Frame(self.bgImage, "gameMenu", size=[0.3, 0.7], pos=[0.02, 0.15], border=1)

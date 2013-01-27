@@ -7,11 +7,16 @@ __author__ = 'capgeti'
 class DefaultView(bgui.System):
 
     def __init__(self):
-        bgui.System.__init__(self, "guiStyle")
+        bgui.System.__init__(self, bge.logic.expandPath("//guiStyle"))
         self.clear_time = time.time()
 
         self.keymap = {getattr(bge.events, val): getattr(bgui, val) for val in dir(bge.events) if
                        val.endswith('KEY') or val.startswith('PAD')}
+
+        self.ptKlein = int(bge.render.getWindowHeight() / 30)
+        self.ptNormal = int(bge.render.getWindowHeight() / 17)
+        self.ptGross = int(bge.render.getWindowHeight() / 11)
+        self.ptSehrGross = int(bge.render.getWindowHeight() / 8)
 
     def main(self):
         mouse = bge.logic.mouse

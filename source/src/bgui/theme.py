@@ -1,4 +1,6 @@
 import configparser
+import os
+import bge
 
 # The following is a bit of a hack so we can get our own SectionProxy in.
 # This allows us to return some nicer values from our config files
@@ -7,8 +9,12 @@ configparser._SectionProxy = configparser.SectionProxy
 class NewSectionProxy(configparser._SectionProxy):
     
     def __getitem__(self, key):
+        
         val = configparser._SectionProxy.__getitem__(self, key)
         
+        if key == "Font":
+            val = bge.logic.expandPath("//") + val.replace("###", os.sep)
+
         if isinstance(val, configparser._SectionProxy):
             return val
         
@@ -43,9 +49,9 @@ class Theme(configparser.ConfigParser):
         configparser.ConfigParser.__init__(self)
         
         if file:
-            Theme.path = file+'\\'
+            Theme.path = file+os.sep
         else:
-            Theme.path = '.\\'
+            Theme.path = '.' + os.sep
 
         if file:
             self.read(Theme.path+'theme.cfg')

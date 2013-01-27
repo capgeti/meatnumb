@@ -2,33 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9d709854-83cf-440a-94ce-08b05b0c012d" name="Default" comment="weapon hud view">
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\objects\textures\bark01.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\objects\textures\bark01.xcf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\objects\textures\blatt01.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\objects\textures\blatt01.xcf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\objects\textures\halm01.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\objects\textures\halm01.xcf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\textures\items\TestItem1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\textures\items\TestItem1.xcf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\textures\items\TestItem2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\textures\items\TestItem2.xcf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Projekte\meatnumb\source\textures\weaponPanel.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/objects/enemy01.blend" afterPath="$PROJECT_DIR$/source/objects/enemy01.blend" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/textures/lvl1_ao.png" afterPath="$PROJECT_DIR$/source/textures/lvl1_ao.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/main.bgeconf" afterPath="$PROJECT_DIR$/source/main.bgeconf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/main.blend" afterPath="$PROJECT_DIR$/source/main.blend" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/objects/waffen.blend" afterPath="$PROJECT_DIR$/source/objects/waffen.blend" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/src/views/highScoreView.py" afterPath="$PROJECT_DIR$/source/src/views/highScoreView.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/src/views/hudView.py" afterPath="$PROJECT_DIR$/source/src/views/hudView.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/src/item.py" afterPath="$PROJECT_DIR$/source/src/item.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/src/views/mainView.py" afterPath="$PROJECT_DIR$/source/src/views/mainView.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/meatnumb.iws" afterPath="$PROJECT_DIR$/meatnumb.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/src/playerController.py" afterPath="$PROJECT_DIR$/source/src/playerController.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/source/src/waveController.py" afterPath="$PROJECT_DIR$/source/src/waveController.py" />
     </list>
     <ignored path="meatnumb.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358983581367" ignored="false" />
+    <file path="/Dummy.txt" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1359289659548" ignored="false" />
     <file path="/playerEntity.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358219122185" ignored="false" />
     <file path="/a.dummy" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358462401104" ignored="false" />
     <file path="/inventarView.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357955579900" ignored="false" />
@@ -39,7 +18,7 @@
     <file path="/game.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358289087330" ignored="false" />
     <file path="/lodManager.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357012113941" ignored="false" />
     <file path="/mapManager.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357431957573" ignored="false" />
-    <file path="/playerController.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1359103940641" ignored="false" />
+    <file path="/playerController.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1359292100298" ignored="false" />
     <file path="/renderHelper.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357255978838" ignored="false" />
     <file path="/keyboardManager.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357950621961" ignored="false" />
     <file path="/view.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1357263874296" ignored="false" />
@@ -78,6 +57,7 @@
     <file path="/waveController.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1359102018195" ignored="false" />
     <file path="/mainMenuController.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358719532564" ignored="false" />
     <file path="/enemyController.py" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1358995097137" ignored="false" />
+    <file path="/.gitignore" changelist="9d709854-83cf-440a-94ce-08b05b0c012d" time="1359293131217" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +72,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -127,6 +106,7 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -139,18 +119,7 @@
       <file leaf-file-name="hudView.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/src/views/hudView.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="113" column="69" selection-start="4804" selection-end="4804" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#15#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gameController.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/src/gameController.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="15" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0">
+            <state line="134" column="26" selection-start="5443" selection-end="5443" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -159,16 +128,27 @@
       <file leaf-file-name="mainView.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/src/views/mainView.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="79" selection-start="179" selection-end="1633" vertical-scroll-proportion="0.0">
+            <state line="32" column="30" selection-start="1608" selection-end="1608" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="highScoreView.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="defaultView.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/src/views/defaultView.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="27" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="e#0#11#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="highScoreView.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/src/views/highScoreView.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="8" selection-start="1302" selection-end="1302" vertical-scroll-proportion="0.48775893">
+            <state line="41" column="13" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -177,29 +157,47 @@
       <file leaf-file-name="playerController.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/src/playerController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="156" column="12" selection-start="4392" selection-end="4392" vertical-scroll-proportion="0.0">
+            <state line="280" column="26" selection-start="8205" selection-end="8205" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="frame.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/src/bgui/frame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#0#17#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="waveController.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/src/waveController.py">
+      <file leaf-file-name="progress_bar.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/src/bgui/progress_bar.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="67" column="16" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding>
-                <element signature="e#0#11#0" expanded="true" />
+                <element signature="e#0#17#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="builtins.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/.IntelliJIdea12/system/python_stubs/-1700991364/builtins.py">
+      <file leaf-file-name="start.bat" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/start.bat">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3722" column="8" selection-start="128395" selection-end="128395" vertical-scroll-proportion="0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="8" column="9" selection-start="62" selection-end="62" vertical-scroll-proportion="0.25708884">
               <folding />
             </state>
           </provider>
@@ -208,27 +206,7 @@
       <file leaf-file-name="enemyController.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/src/enemyController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="45" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="item.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/src/item.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="29" selection-start="399" selection-end="399" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mainMenuController.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/source/src/mainMenuController.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="7" column="13" selection-start="147" selection-end="147" vertical-scroll-proportion="0.0">
+            <state line="6" column="29" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -252,10 +230,8 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/source/src/game.py" />
         <option value="$PROJECT_DIR$/source/src/mainView.py" />
         <option value="$PROJECT_DIR$/source/src/highScoreView.py" />
-        <option value="$PROJECT_DIR$/source/src/views/defaultView.py" />
         <option value="$PROJECT_DIR$/source/guiStyle/theme.cfg" />
         <option value="$PROJECT_DIR$/source/src/weaponController.py" />
         <option value="$PROJECT_DIR$/source/src/menuController.py" />
@@ -263,11 +239,13 @@
         <option value="$PROJECT_DIR$/source/src/enemyController.py" />
         <option value="$PROJECT_DIR$/source/src/gameController.py" />
         <option value="$PROJECT_DIR$/source/src/item.py" />
-        <option value="$PROJECT_DIR$/source/src/views/mainView.py" />
         <option value="$PROJECT_DIR$/source/src/waveController.py" />
         <option value="$PROJECT_DIR$/source/src/views/hudView.py" />
-        <option value="$PROJECT_DIR$/source/src/playerController.py" />
+        <option value="$PROJECT_DIR$/source/src/views/mainView.py" />
+        <option value="$PROJECT_DIR$/source/src/views/defaultView.py" />
         <option value="$PROJECT_DIR$/source/src/views/highScoreView.py" />
+        <option value="$PROJECT_DIR$/source/src/playerController.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -325,8 +303,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -483,8 +459,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meatnumb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meatnumb" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="bin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -781,7 +773,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1" y="1" width="1364" height="736" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -789,7 +781,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39765102" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298611" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -797,7 +789,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25345623" sideWeight="0.55723906" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25345623" sideWeight="0.6701389" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -873,51 +865,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/source/src/bgui/image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="6" selection-start="59" selection-end="59" vertical-scroll-proportion="-2.7915905">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/src/weaponController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="27" selection-start="74" selection-end="74" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Program Files/Blender Foundation/Blender/2.65/python/lib/threading.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="16" selection-start="922" selection-end="926" vertical-scroll-proportion="-0.4335155" />
-      </provider>
-    </entry>
-    <entry file="file://C:/Python32/Lib/random.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="245" column="8" selection-start="8677" selection-end="8677" vertical-scroll-proportion="0.14754099" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/src/bgui/widget.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="371" column="84" selection-start="10213" selection-end="10213" vertical-scroll-proportion="0.030965392">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/src/bgui/label.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="15" selection-start="68" selection-end="68" vertical-scroll-proportion="0.030965392">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/src/mainMenuController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="13" selection-start="147" selection-end="147" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/src/gameController.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="17" column="15" selection-start="315" selection-end="315" vertical-scroll-proportion="0.0">
@@ -939,52 +886,99 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/src/waveController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="18" selection-start="0" selection-end="2198" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/src/weaponController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="22" selection-start="147" selection-end="147" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/src/mainMenuController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="25" selection-start="153" selection-end="153" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/src/enemyController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="45" selection-start="360" selection-end="360" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
+        <state line="6" column="29" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/src/views/mainView.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="79" selection-start="179" selection-end="1633" vertical-scroll-proportion="0.0">
+        <state line="32" column="30" selection-start="1608" selection-end="1608" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/src/waveController.py">
+    <entry file="file://$PROJECT_DIR$/source/src/views/defaultView.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="67" column="16" selection-start="1475" selection-end="1475" vertical-scroll-proportion="0.0">
+        <state line="7" column="27" selection-start="109" selection-end="109" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/source/src/views/highScoreView.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="41" column="13" selection-start="1552" selection-end="1552" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/source/src/views/hudView.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="113" column="69" selection-start="4804" selection-end="4804" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="e#15#25#0" expanded="true" />
-          </folding>
+        <state line="134" column="26" selection-start="5443" selection-end="5443" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/src/playerController.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="156" column="12" selection-start="4392" selection-end="4392" vertical-scroll-proportion="0.0">
+        <state line="280" column="26" selection-start="8205" selection-end="8205" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/src/bgui/frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/src/views/highScoreView.py">
+    <entry file="file://$PROJECT_DIR$/source/src/bgui/progress_bar.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="8" selection-start="1302" selection-end="1302" vertical-scroll-proportion="0.48775893">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="9" selection-start="62" selection-end="62" vertical-scroll-proportion="0.25708884">
           <folding />
         </state>
       </provider>

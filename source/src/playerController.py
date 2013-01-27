@@ -11,7 +11,7 @@ player = None
 device = aud.device()
 
 def playSound(file):
-    device.play(aud.Factory("sounds/" + file))
+    device.play(aud.Factory(bge.logic.expandPath("//sounds/"+file)))
 
 
 def setCurrentWeapon(newWeapon):
@@ -153,7 +153,7 @@ def shoot(cont):
     click = cont.sensors['left']
 
     if not click.positive or not player['currentWeapon'] or player['lockShoot'] or not player['currentWeapon'].schuss:
-        if not player['currentWeapon'].schuss:
+        if player['currentWeapon'] and not player['currentWeapon'].schuss:
             playSound("leer.wav")
         return
 
@@ -218,16 +218,16 @@ def shoot(cont):
 
     player['currentWeapon'].schuss -= 1
 
-    checkReload()
+    checkReload(player['currentWeapon'])
 
 
-def checkReload():
-    if player['currentWeapon'] and player['currentWeapon'].schuss <= 0:
-        player['currentWeapon'].magazine -= 1
-        if player['currentWeapon'].magazine < 0:
-            player['currentWeapon'].magazine = 0
+def checkReload(weapon):
+    if weapon and weapon.schuss <= 0:
+        weapon.magazine -= 1
+        if weapon.magazine < 0:
+            weapon.magazine = 0
             return
-        player['currentWeapon'].schuss = player['currentWeapon'].schusskapa
+        weapon.schuss = weapon.schusskapa
 
 
 def setWaffenSlot(slot, checkCurrent=True):
@@ -278,7 +278,7 @@ def pickUp(cont):
         if not weapon: return
         weapon.magazine += pickUpObject['magazines']
         pickUpObject.endObject()
-        checkReload()
+        checkReload(weapon)
 
 
 def getWeaponByName(name):

@@ -4,14 +4,11 @@ from src import playerController, waveController
 import src.bgui as bgui
 from src.views.defaultView import DefaultView
 
+rootPath = bge.logic.expandPath("//")
 
 class HudView(DefaultView):
     def __init__(self):
         DefaultView.__init__(self)
-
-        self.ptNormal = int(bge.render.getWindowHeight() / 12)
-        self.ptGross = int(bge.render.getWindowHeight() / 9)
-        self.ptSehrGross = int(bge.render.getWindowHeight() / 7)
 
         width = bge.render.getWindowWidth()
         height = bge.render.getWindowHeight()
@@ -67,8 +64,8 @@ class HudView(DefaultView):
 
     def createHPView(self, aspect):
         self.hpFrame = bgui.Frame(self, "hpFrame", border=1, pos=[0.01, 0.01], size=[0.1, 0.1 * aspect])
-        bgui.Label(self.hpFrame, "hptext", text="Leben:", pt_size=self.ptGross, pos=[0.05, 0.7])
-        self.hpAnzeige = bgui.Label(self.hpFrame, "hpAnzeige", text="100", pt_size=self.ptSehrGross, pos=[0.05, 0.1])
+        bgui.Label(self.hpFrame, "hptext", text="Leben:", pt_size=self.ptNormal, pos=[0.05, 0.7])
+        self.hpAnzeige = bgui.Label(self.hpFrame, "hpAnzeige", text="100", pt_size=self.ptGross, pos=[0.05, 0.1])
 
     def createItemList(self, aspect):
         self.itemFrame = bgui.Frame(self, "itemFrame", size=[0.225, 0.068 * aspect], pos=[0.3875, 0.01],
@@ -166,7 +163,7 @@ class HudView(DefaultView):
             item = self.items[i].itemImage
             itemImage = item.image
             if weapons[i]:
-                path = "textures/" + weapons[i].objName + ".png"
+                path = rootPath + "textures/" + weapons[i].objName + ".png"
                 if itemImage != path:
                     item.visible = True
                     item.update_image(path)
@@ -178,8 +175,8 @@ class HudView(DefaultView):
         self.muniFrame = bgui.Frame(self, "muniFrame", border=1, pos=[0.84, 0.01], size=[0.15, 0.1 * aspect])
         self.weaponNameLabel = bgui.Label(self.muniFrame, "nameLabel", pt_size=self.ptNormal, text="Keine Waffe",
             pos=[0.05, 0.7])
-        self.muniLabel = bgui.Label(self.muniFrame, "muniLabel", pt_size=self.ptGross, text="- / -", pos=[0.05, 0.38])
-        self.magazinLabel = bgui.Label(self.muniFrame, "magaLabel", pt_size=self.ptGross, text="-", pos=[0.7, 0.1])
+        self.muniLabel = bgui.Label(self.muniFrame, "muniLabel", pt_size=self.ptNormal, text="- / -", pos=[0.05, 0.38])
+        self.magazinLabel = bgui.Label(self.muniFrame, "magaLabel", pt_size=self.ptNormal, text="-", pos=[0.7, 0.1])
 
     def createWaveView(self, aspect):
         self.waveFrame = bgui.Frame(self, "waveFrame", border=1, pos=[0.01, 0.85], size=[0.14, 0.07 * aspect])
@@ -200,17 +197,17 @@ class HudView(DefaultView):
 
 
 class ItemView(bgui.Image):
-    def __init__(self, slot, parent, name, img="textures/itemEmpty.png", size=None, pos=None):
+    def __init__(self, slot, parent, name, img=rootPath+"textures/itemEmpty.png", size=None, pos=None):
         if not pos: pos = [0, 0]
         if not size: size = [0, 0]
         bgui.Image.__init__(self, parent, name, img=img, size=size, pos=pos)
 
         self.slot = slot
 
-        self.hoverImage = bgui.Image(self, "hover_" + name, size=[1, 1], img="textures/itemHover.png")
+        self.hoverImage = bgui.Image(self, "hover_" + name, size=[1, 1], img=rootPath+"textures/itemHover.png")
         self.hoverImage.visible = False
 
-        self.activeImage = bgui.Image(self, "active_" + name, size=[1, 1], img="textures/itemActive.png")
+        self.activeImage = bgui.Image(self, "active_" + name, size=[1, 1], img=rootPath+"textures/itemActive.png")
         self.activeImage.visible = False
 
         self.itemImage = bgui.Image(self, "itemImage_" + name, size=[1, 1], img="")

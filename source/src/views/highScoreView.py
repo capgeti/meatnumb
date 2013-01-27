@@ -7,11 +7,9 @@ class HighScoreView(DefaultView):
     def __init__(self):
         DefaultView.__init__(self)
 
-        self.ptNormal = int(bge.render.getWindowHeight() / 10)
-        self.ptGross = int(bge.render.getWindowHeight() / 3)
-        self.ptKlein = int(bge.render.getWindowHeight() / 20)
+        path = bge.logic.expandPath("//")
 
-        self.bgImage = bgui.Image(self, "bgImage", img="textures/bg.JPG", size=[1, 1])
+        self.bgImage = bgui.Image(self, "bgImage", img=path+"textures/bg.JPG", size=[1, 1])
 
         bgui.Label(self.bgImage, "mainLabel", pos=[0.4, 0.5], text="Highscore!  ", pt_size=self.ptGross,
             options=bgui.BGUI_DEFAULT)
