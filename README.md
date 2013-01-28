@@ -42,7 +42,7 @@ Halte solange wie möglich gegen die Alieninvasion an!
 
 Die Angriffe der Aliens erfolgen in Wellen. Jede Welle wird schwerer als die Vorhergehende sein.
 Für die Bekämpfung der Aliens stehen verschiedene Waffen zur Verfügung.
-Diese Waffen muss man allerdings erst suchen.
+Diese Waffen muss man allerdings erst suchen bzw Kaufen.
 
 Munition für diese Waffen bekommt man von den Aliens, oder sie liegt bereits auf der Karte herum.
 
